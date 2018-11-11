@@ -10,6 +10,7 @@ import numpy as np
 from sklearn.externals import joblib
 import os
 import argparse
+import pickle
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s [%(levelname)s] <%(processName)s> (%(threadName)s) %(message)s')
 logger = logging.getLogger(__name__)
@@ -29,21 +30,10 @@ if __name__ == '__main__':
     logger.info("start load data")
     train_data_df = load_data_from_csv(config.train_data_path)
     validate_data_df = load_data_from_csv(config.validate_data_path)
-
+    
+    vectorizer_tfidf = pickle.load(open("../model/vectorizer_tfidf.pkl", 'r'))
     content_train = train_data_df.iloc[:, 1]
-
-    logger.info("start seg train data")
-    content_train = seg_words(content_train)
-    logger.info("complete seg train data")
-
     columns = train_data_df.columns.values.tolist()
-
-    logger.info("start train feature extraction")
-    vectorizer_tfidf = TfidfVectorizer(analyzer='word', ngram_range=(1, 5), min_df=5, norm='l2')
-    vectorizer_tfidf.fit(content_train)
-    logger.info("complete train feature extraction models")
-    logger.info("vocab shape: ")
-    logger.info(np.shape(vectorizer_tfidf.vocabulary_.keys()))
 
     # model train
     logger.info("start train model")
