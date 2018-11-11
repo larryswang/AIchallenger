@@ -42,7 +42,8 @@ if __name__ == '__main__':
     vectorizer_tfidf = TfidfVectorizer(analyzer='word', ngram_range=(1, 5), min_df=5, norm='l2')
     vectorizer_tfidf.fit(content_train)
     logger.info("complete train feature extraction models")
-    logger.info("vocab shape: %s" % np.shape(vectorizer_tfidf.vocabulary_.keys()))
+    logger.info("vocab shape: ")
+    logger.info(np.shape(vectorizer_tfidf.vocabulary_.keys()))
 
     # model train
     logger.info("start train model")

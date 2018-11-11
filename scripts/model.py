@@ -13,7 +13,7 @@ logger = logging.getLogger(__name__)
 class TextClassifier():
 
     def __init__(self, vectorizer, classifier=MultinomialNB()):
-        classifier = SVC(kernel="rbf")
+        classifier = SVC(kernel="rbf", gamma = 'auto')
         # classifier = SVC(kernel="linear")
         self.classifier = classifier
         self.vectorizer = vectorizer

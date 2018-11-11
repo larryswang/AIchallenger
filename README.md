@@ -1,6 +1,7 @@
 # EECS 595 Project
 
 ## project folder structure
+
 aichallenger
 
     data
