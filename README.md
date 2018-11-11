@@ -41,4 +41,8 @@ create venv folder:
 `pip install sklearn`
 
 ### run the scripts 
-training (under scripts folder): `python main_train.py`
+preprocessing (under scripts folder): 
+`python data_preprocess.py`, this will create a pkl file in model/ folder
+
+training (under scripts folder): 
+`python main_train.py`
